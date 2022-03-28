@@ -14,7 +14,10 @@ function CategoriesScreen({ navigation }) {
     function renderCategoryItem(itemData) {
 
         function onCatItemPressedHandler() {
-            navigation.navigate('Meals Over View');
+            navigation.navigate('Meals Over View', {
+                categoryId: itemData.item.id,
+                categoryTitle: itemData.item.title,
+            });
         }
 
         return (

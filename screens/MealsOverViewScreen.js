@@ -1,13 +1,15 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { CATEGORIES } from '../data/dummy-data';
 
-function MealsOverViewScreens() {
+function MealsOverViewScreens({ route }) {
+    const catId = route.params.categoryId;
+    const catTitle = route.params.categoryTitle;
 
     return (
         <View style={
             style.container
         }>
-            <Text> Meals OverView Screens</Text>
+            <Text> {catTitle} Meals OverView Screens {catId} </Text>
         </View>
     );
 }
