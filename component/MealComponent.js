@@ -1,10 +1,22 @@
 import { View, Text, Pressable, StyleSheet, Image } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
-function Meal({ title, imageUrl, duration, complexity, affordability }) {
+function Meal({ id, title, imageUrl, duration, complexity, affordability }) {
+    //ليه ده لو جوا الدوسة مبيشتغلش
+    const navigation = useNavigation();
+
+    function mealPressedHandler() {
+
+        navigation.navigate('MealDetail', {
+            mealId: id,
+        });
+    }
+
     return (
         <View style={style.meal}>
             <Pressable
                 android_ripple={{ color: '#ccc' }}
+                onPress={mealPressedHandler}
             >
                 <View >
                     <Image style={style.image} source={{ uri: imageUrl }} />
