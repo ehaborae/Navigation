@@ -23,8 +23,9 @@ const style = StyleSheet.create({
         padding: 8,
     },
     detailItem: {
-        color: 'white',
         marginHorizontal: 4,
-        fontSize: 12,
+        color: 'grey',
+        fontSize: 16,
+        textAlign: 'center',
     }
 });
