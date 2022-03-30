@@ -1,12 +1,29 @@
-import { View, Text, Image, StyleSheet, ScrollView, Dimensions } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, Dimensions, Button } from "react-native";
 import ListDetailsItem from "../component/ListDetailsItem";
 import MealDetails from "../component/MealDetails";
 import { MEALS } from '../data/dummy-data';
+import { useLayoutEffect } from 'react';
+import IconButton from "../component/IconButton";
 
-function MealDetailsScreen({ route }) {
+
+
+function MealDetailsScreen({ route, navigation }) {
 
     const mealId = route.params.mealId;
+    function onHeaderButtonPressed() { 
+        console.log('HeaderButtonPressed');
+    }
 
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => {
+                // return <Text style={style.headerText}> Header</Text>
+                // return <Button title='Press Me' onPress={onHeaderButtonPressed} />
+                return <IconButton onPress={onHeaderButtonPressed}/>
+            }
+        });
+    }, [navigation, onHeaderButtonPressed]);
 
 
     //هنا منكتبش اقواس اوبجيكت عشان عيب 
