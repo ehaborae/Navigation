@@ -2,12 +2,30 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+
 import { StyleSheet, Text, View, Button } from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverViewScreens from './screens/MealsOverViewScreen';
 import MealDetailsScreen from './screens/MealDetails';
+import FavoritesScreen from './screens/FavoritesScreen';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return <Drawer.Navigator>
+    <Drawer.Screen
+      name='Categories'
+      component={CategoriesScreen}
+    />
+    <Drawer.Screen
+      name='Favorites'
+      component={FavoritesScreen}
+    />
+  </Drawer.Navigator>;
+}
 
 
 export default function App() {
@@ -21,8 +39,8 @@ export default function App() {
           contentStyle: { backgroundColor: 'black' }
         }}>
           <Stack.Screen
-            name='Meals Categories'
-            component={CategoriesScreen}
+            name='Drawer'
+            component={DrawerNavigator}
             options={{
               title: 'All Categories',
 
@@ -42,12 +60,12 @@ export default function App() {
           <Stack.Screen
             name='MealDetail'
             component={MealDetailsScreen}
-            // options={{
-            //   headerRight: () => {
-            //     // return <Text style={style.headerText}> Header</Text>
-            //     return <Button title='Press Me' onPress={onHeaderPressed} />
-            //   }
-            // }}
+          // options={{
+          //   headerRight: () => {
+          //     // return <Text style={style.headerText}> Header</Text>
+          //     return <Button title='Press Me' onPress={onHeaderPressed} />
+          //   }
+          // }}
           />
         </Stack.Navigator>
       </NavigationContainer>
@@ -60,4 +78,4 @@ const style = StyleSheet.create({
     color: '#ccc',
     fontSize: 18,
   },
-});
+});     
